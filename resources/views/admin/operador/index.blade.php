@@ -89,6 +89,7 @@
   </div> <!-- .row -->
 </div> <!-- .container-fluid -->
 
+
 @if (session('operador.destroy.success'))
     <script>
         Swal.fire(
