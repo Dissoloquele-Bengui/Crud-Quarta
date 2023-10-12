@@ -28,6 +28,14 @@
                       <label for="search" class="sr-only">Search</label>
                       <input type="text" class="form-control" id="search1" value="" placeholder="Search">
                     </div>
+
+                    <div class="col-auto">
+                        {{-- @can('user-create') --}}
+                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ModalCreate" style="color:white">
+                                <span style="color:white"></span> {{ __('Adicionar') }}
+                            </a>
+                        {{-- @endcan --}}
+                    </div>
                   </div>
                 </form>
               </div>
@@ -61,7 +69,8 @@
                                     <span class="text-muted sr-only">Action</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$operador->id}}">{{ __('Editar') }}</a>
+                                        {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
                                         <a class="dropdown-item" href="{{route('admin.operador.destroy',['id'=>$operador->id])}}">Remover</a>
                                         <a class="dropdown-item" href="{{route('admin.operador.purge',['id'=>$operador->id])}}">Purgar</a>
                                     </div>
@@ -69,6 +78,23 @@
 
                             </td>
                         </tr>
+                    {{-- ModalUpdate --}}
+                    <div class="modal fade text-left" id="ModalEdit{{$operador->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">{{ __('Editar Operador') }}</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    @include('admin.operador.create.index')
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{-- ModalUpdate --}}
                     @endforeach
                 </tbody>
               </table>
@@ -88,6 +114,30 @@
     </div> <!-- .col-12 -->
   </div> <!-- .row -->
 </div> <!-- .container-fluid -->
+
+
+
+{{-- ModalCreate --}}
+
+        <div class="modal fade text-left" id="ModalCreate" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">{{ __('Adicionar Operador') }}</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @include('admin.operador.create.index')
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{{-- ModalCreate --}}
+
 
 
 @if (session('operador.destroy.success'))

@@ -1,7 +1,7 @@
-@extends('layouts._includes.admin.body')
-@section('titulo','Cadastrar Operador')
+{{-- @extends('layouts._includes.admin.body') --}}
+{{-- @section('titulo','Cadastrar Operador') --}}
 
-@section('conteudo')
+{{-- @section('conteudo') --}}
     <div class="card shadow mb-4">
         <div class="card-header">
         <strong class="card-title">Cadastrar Operador</strong>
@@ -34,4 +34,4 @@
     </script>
 @endif
 
-@endsection
+{{-- @endsection --}}
