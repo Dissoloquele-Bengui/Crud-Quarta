@@ -1,5 +1,5 @@
 @extends('layouts._includes.admin.body')
-@section('titulo','Listar Operadores')
+@section('titulo','Listar Frequência|Numeração')
 
 @section('conteudo')
 <div class="container-fluid">
@@ -45,52 +45,44 @@
                 <thead class="thead-dark">
                   <tr>
                     <th>ID</th>
-                    <th>NOME</th>
-                    <th>NIF</th>
-                    <th>FUNDAÇÃO</th>
-                    <th>ZONA DE COBERTURA</th>
-                    <th>TECNOLOGIAS</th>
-                    <th>SITE</th>
+                    <th>FREQUÊNCIA</th>
+                    <th>NUMERAÇÃO</th>
                     <th>Opções</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($operadores as $operador)
+                    @foreach ($frequencia_numeracaos as $frequencia_numeracao)
                         <tr>
-                            <td>{{$operador->id}}</td>
-                            <td>{{{$operador->vc_nome}}}</td>
-                            <td>{{$operador->vc_nif}}</td>
-                            <td>{{{$operador->yr_ano_fundacao}}}</td>
-                            <td>{{$operador->vc_zona_geografica_actuacao}}</td>
-                            <td>{{{$operador->vc_tecnologia_usada}}}</td>
-                            <td>{{$operador->vc_site_oficial}}</td>
+                            <td>{{$frequencia_numeracao->id}}</td>
+                            <td>{{{$frequencia_numeracao->vc_frequencia}}}</td>
+                            <td>{{{$frequencia_numeracao->vc_numeracao}}}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="text-muted sr-only">Action</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$operador->id}}">{{ __('Editar') }}</a>
-                                        {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
-                                        <a class="dropdown-item" href="{{route('admin.operador.destroy',['id'=>$operador->id])}}">Remover</a>
-                                        <a class="dropdown-item" href="{{route('admin.operador.purge',['id'=>$operador->id])}}">Purgar</a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$frequencia_numeracao->id}}">{{ __('Editar') }}</a>
+                                        {{-- <a class="dropdown-item" href="{{route('admin.frequencia_numeracao.edit',['id'=>$frequencia_numeracao->id])}}">Editar</a> --}}
+                                        <a class="dropdown-item" href="{{route('admin.frequencia_numeracao.destroy',['id'=>$frequencia_numeracao->id])}}">Remover</a>
+                                        <a class="dropdown-item" href="{{route('admin.frequencia_numeracao.purge',['id'=>$frequencia_numeracao->id])}}">Purgar</a>
                                     </div>
                                     </div>
 
                             </td>
                         </tr>
                     {{-- ModalUpdate --}}
-                    <div class="modal fade text-left" id="ModalEdit{{$operador->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade text-left" id="ModalEdit{{$frequencia_numeracao->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">{{ __('Editar Operador') }}</h4>
+                                    <h4 class="modal-title">{{ __('Editar Frequência|Numeração') }}</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @include('admin.operador.edit.index')
+                                    @include('admin.frequencia_numeracao.edit.index')
                                     </div>
                                 </div>
                             </div>
@@ -124,13 +116,13 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">{{ __('Adicionar Operador') }}</h4>
+                        <h4 class="modal-title">{{ __('Adicionar Frequência|Numeração') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        @include('admin.operador.create.index')
+                        @include('admin.frequencia_numeracao.create.index')
                         </div>
                     </div>
                 </div>
@@ -143,7 +135,7 @@
 <script>
     $(document).ready(function() {
     $('#ModalCreate').on('show.bs.modal', function (event) {
-        $.get('/operador/create', function(response) {
+        $.get('/frequencia_numeracao/create', function(response) {
             $('#ModalCreate .modal-body').html(response);
         });
     });
@@ -153,37 +145,37 @@
 
 
 
-@if (session('operador.destroy.success'))
+@if (session('frequencia_numeracao.destroy.success'))
     <script>
         Swal.fire(
-            'Operador Eliminada com sucesso!',
+            'Frequência|Numeração Eliminada com sucesso!',
             '',
             'success'
         )
     </script>
 @endif
-@if (session('operador.destroy.error'))
+@if (session('frequencia_numeracao.destroy.error'))
     <script>
         Swal.fire(
-            'Erro ao Eliminar Operador!',
+            'Erro ao Eliminar Frequência|Numeração!',
             '',
             'error'
         )
     </script>
 @endif
-@if (session('operador.purge.success'))
+@if (session('frequencia_numeracao.purge.success'))
     <script>
         Swal.fire(
-            'Operador Purgada com sucesso!',
+            'Frequência|Numeração Purgada com sucesso!',
             '',
             'success'
         )
     </script>
 @endif
-@if (session('operador.purge.error'))
+@if (session('frequencia_numeracao.purge.error'))
     <script>
         Swal.fire(
-            'Erro ao Purgar Operador!',
+            'Erro ao Purgar Frequência|Numeração!',
             '',
             'error'
         )

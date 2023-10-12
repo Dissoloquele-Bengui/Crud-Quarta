@@ -1,33 +1,33 @@
 {{-- @extends('layouts._includes.admin.body') --}}
-{{-- @section('titulo','Cadastrar Operador') --}}
+{{-- @section('titulo','Cadastrar categoriaTituloHabitantes') --}}
 
 {{-- @section('conteudo') --}}
     <div class="card shadow mb-4">
         {{-- <div class="card-header">
-        <strong class="card-title">Cadastrar Operador</strong>
+        <strong class="card-title">Cadastrar Categoria Titulo Habitantes</strong>
         </div> --}}
-        <form action="{{route('admin.operador.store')}}" method="post">
+        <form action="{{route('admin.categoria_titulo_habitante.store')}}" method="post">
             @csrf
             <div class="card-body">
-                @include('_form.operadorForm.index')
+                @include('_form.categoriaTituloHabitanteForm.index')
                 <button type="submit" class="btn btn-primary w-md">Cadastrar</button>
             </div>
         </form>
     </div>
 
-@if (session('operador.create.success'))
+@if (session('categoria_titulo_habitante.create.success'))
     <script>
         Swal.fire(
-            'Operador Cadastrada com sucesso!',
+            'Categoria Titulo Habitante Cadastrada com sucesso!',
             '',
             'success'
         )
     </script>
 @endif
-@if (session('operador.create.error'))
+@if (session('categoria_titulo_habitante.create.error'))
     <script>
         Swal.fire(
-            'Erro ao Cadastrar Operador!',
+            'Erro ao Cadastrar Categoria Titulo Habitante!',
             '',
             'error'
         )

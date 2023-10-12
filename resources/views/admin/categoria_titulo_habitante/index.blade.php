@@ -1,5 +1,5 @@
 @extends('layouts._includes.admin.body')
-@section('titulo','Listar Operadores')
+@section('titulo','Listar Categoria Titulo Habitantes')
 
 @section('conteudo')
 <div class="container-fluid">
@@ -46,51 +46,41 @@
                   <tr>
                     <th>ID</th>
                     <th>NOME</th>
-                    <th>NIF</th>
-                    <th>FUNDAÇÃO</th>
-                    <th>ZONA DE COBERTURA</th>
-                    <th>TECNOLOGIAS</th>
-                    <th>SITE</th>
                     <th>Opções</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($operadores as $operador)
+                    @foreach ($categoria_titulo_habitantes as $categoria_titulo_habitante)
                         <tr>
-                            <td>{{$operador->id}}</td>
-                            <td>{{{$operador->vc_nome}}}</td>
-                            <td>{{$operador->vc_nif}}</td>
-                            <td>{{{$operador->yr_ano_fundacao}}}</td>
-                            <td>{{$operador->vc_zona_geografica_actuacao}}</td>
-                            <td>{{{$operador->vc_tecnologia_usada}}}</td>
-                            <td>{{$operador->vc_site_oficial}}</td>
+                            <td>{{$categoria_titulo_habitante->id}}</td>
+                            <td>{{{$categoria_titulo_habitante->vc_nome}}}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="text-muted sr-only">Action</span>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$operador->id}}">{{ __('Editar') }}</a>
-                                        {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
-                                        <a class="dropdown-item" href="{{route('admin.operador.destroy',['id'=>$operador->id])}}">Remover</a>
-                                        <a class="dropdown-item" href="{{route('admin.operador.purge',['id'=>$operador->id])}}">Purgar</a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$categoria_titulo_habitante->id}}">{{ __('Editar') }}</a>
+                                        {{-- <a class="dropdown-item" href="{{route('admin.categoria_titulo_habitante.edit',['id'=>$categoria_titulo_habitante->id])}}">Editar</a> --}}
+                                        <a class="dropdown-item" href="{{route('admin.categoria_titulo_habitante.destroy',['id'=>$categoria_titulo_habitante->id])}}">Remover</a>
+                                        <a class="dropdown-item" href="{{route('admin.categoria_titulo_habitante.purge',['id'=>$categoria_titulo_habitante->id])}}">Purgar</a>
                                     </div>
                                     </div>
 
                             </td>
                         </tr>
                     {{-- ModalUpdate --}}
-                    <div class="modal fade text-left" id="ModalEdit{{$operador->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade text-left" id="ModalEdit{{$categoria_titulo_habitante->id}}" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h4 class="modal-title">{{ __('Editar Operador') }}</h4>
+                                    <h4 class="modal-title">{{ __('Editar Categoria') }}</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @include('admin.operador.edit.index')
+                                    @include('admin.categoria_titulo_habitante.edit.index')
                                     </div>
                                 </div>
                             </div>
@@ -124,13 +114,13 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">{{ __('Adicionar Operador') }}</h4>
+                        <h4 class="modal-title">{{ __('Adicionar Categoria') }}</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        @include('admin.operador.create.index')
+                        @include('admin.categoria_titulo_habitante.create.index')
                         </div>
                     </div>
                 </div>
@@ -143,7 +133,7 @@
 <script>
     $(document).ready(function() {
     $('#ModalCreate').on('show.bs.modal', function (event) {
-        $.get('/operador/create', function(response) {
+        $.get('/categoria_titulo_habitante/create', function(response) {
             $('#ModalCreate .modal-body').html(response);
         });
     });
@@ -153,37 +143,37 @@
 
 
 
-@if (session('operador.destroy.success'))
+@if (session('categoria_titulo_habitante.destroy.success'))
     <script>
         Swal.fire(
-            'Operador Eliminada com sucesso!',
+            'Categoria Titulo Habitante Eliminada com sucesso!',
             '',
             'success'
         )
     </script>
 @endif
-@if (session('operador.destroy.error'))
+@if (session('categoria_titulo_habitante.destroy.error'))
     <script>
         Swal.fire(
-            'Erro ao Eliminar Operador!',
+            'Erro ao Eliminar Categoria Titulo Habitante!',
             '',
             'error'
         )
     </script>
 @endif
-@if (session('operador.purge.success'))
+@if (session('categoria_titulo_habitante.purge.success'))
     <script>
         Swal.fire(
-            'Operador Purgada com sucesso!',
+            'Categoria Titulo Habitante Purgada com sucesso!',
             '',
             'success'
         )
     </script>
 @endif
-@if (session('operador.purge.error'))
+@if (session('categoria_titulo_habitante.purge.error'))
     <script>
         Swal.fire(
-            'Erro ao Purgar Operador!',
+            'Erro ao Purgar Categoria Titulo Habitante!',
             '',
             'error'
         )
