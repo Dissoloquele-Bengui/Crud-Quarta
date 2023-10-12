@@ -60,6 +60,20 @@ Route::prefix('categoria_servico')->group(function () {
 
 /*END CategoriaServico*/
 
+/*START FrequenciaNumeracao*/
+Route::prefix('frequencia_numeracao')->group(function () {
+    Route::get('index', ['as' => 'admin.frequencia_numeracao.index', 'uses' => 'Admin\FrequenciaNumeracaoController@index']);
+    Route::get('create', ['as' => 'admin.frequencia_numeracao.create', 'uses' => 'Admin\FrequenciaNumeracaoController@create']);
+    Route::post('store', ['as' => 'admin.frequencia_numeracao.store', 'uses' => 'Admin\FrequenciaNumeracaoController@store']);
+    Route::get('show/{id}', ['as' => 'admin.frequencia_numeracao.show', 'uses' => 'Admin\FrequenciaNumeracaoController@show']);
+    Route::get('edit/{id}', ['as' => 'admin.frequencia_numeracao.edit', 'uses' => 'Admin\FrequenciaNumeracaoController@edit']);
+    Route::post('update/{id}', ['as' => 'admin.frequencia_numeracao.update', 'uses' => 'Admin\FrequenciaNumeracaoController@update']);
+    Route::get('destroy/{id}', ['as' => 'admin.frequencia_numeracao.destroy', 'uses' => 'Admin\FrequenciaNumeracaoController@destroy']);
+    Route::get('purge/{id}', ['as' => 'admin.frequencia_numeracao.purge', 'uses' => 'Admin\FrequenciaNumeracaoController@purge']);
+});
+
+/*END FrequenciaNumeracao*/
+
 
 Route::middleware([
     'auth:sanctum',
