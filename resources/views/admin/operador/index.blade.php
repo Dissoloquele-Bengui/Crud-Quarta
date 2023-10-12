@@ -140,6 +140,18 @@
 {{-- ModalCreate --}}
 
 
+<script>
+    $(document).ready(function() {
+    $('#ModalCreate').on('show.bs.modal', function (event) {
+        $.get('/operador/create', function(response) {
+            $('#ModalCreate .modal-body').html(response);
+        });
+    });
+});
+
+</script>
+
+
 
 @if (session('operador.destroy.success'))
     <script>
