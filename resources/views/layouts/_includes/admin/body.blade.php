@@ -46,7 +46,7 @@
         <main role="main" class="main-content">
             @yield('conteudo')
         </main>
-
+        @include('layouts.alert.index')
     </div> <!-- .wrapper -->
     <script src="{{asset('painel/js/jquery.min.js')}}"></script>
     <script src="{{asset('painel/js/popper.min.js')}}"></script>

@@ -1,5 +1,5 @@
 @extends('layouts._includes.admin.body')
-@section('titulo','Listar Operadores')
+@section('titulo','Listar Telefones')
 
 @section('conteudo')
 <div class="container-fluid">
@@ -31,7 +31,7 @@
 
                                         <div class="col-auto">
                                             {{-- @can('user-create') --}}
-                                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ModalCreate" style="color:white">
+                                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ModalCreateTelefone" style="color:white">
                                                 <span style="color:white"></span> {{ __('Adicionar') }}
                                             </a>
                                             {{-- @endcan --}}
@@ -43,58 +43,39 @@
                             <table class="table table-borderless table-hover">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>ID</th>
-                                        <th>NOME</th>
-                                        <th>NIF</th>
-                                        <th>FUNDAÇÃO</th>
-                                        <th>ZONA DE COBERTURA</th>
-                                        <th>TECNOLOGIAS</th>
-                                        <th>SITE</th>
-                                        <th>Opções</th>
+                                        <th width="5%">ID</th>
+                                        <th width="70%">Telefone</th>
+                                        <th width="20%">Estado</th>
+                                        <th width="5%">Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($operadores as $operador)
+                                    @foreach ($telefones as $key => $item)
                                     <tr>
-                                        <td>{{$operador->id}}</td>
-                                        <td>{{{$operador->vc_nome}}}</td>
-                                        <td>{{$operador->vc_nif}}</td>
-                                        <td>{{{$operador->yr_ano_fundacao}}}</td>
-                                        <td>{{$operador->vc_zona_geografica_actuacao}}</td>
-                                        <td>{{{$operador->vc_tecnologia_usada}}}</td>
-                                        <td>{{$operador->vc_site_oficial}}</td>
+                                        <td>{{$key+1}}</td>
+                                        <td>{{{$item->vc_telefone}}}</td>
+                                        <td>
+                                            @if($item->it_estado==1)
+                                            Activo
+                                            @else
+                                            Inactivo
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span class="text-muted sr-only">Action</span>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$operador->id}}">{{ __('Editar') }}</a>
+                                                    <a class="dropdown-item" href="#" onclick="ModalEdit('{{$item->id}}', '{{$item->vc_telefone}}', '{{$item->it_estado}}')" data-toggle="modal" data-target="#ModalEdit{{$item->id}}">{{ __('Editar') }}</a>
                                                     {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
-                                                    <a class="dropdown-item" href="{{route('admin.operador.destroy',['id'=>$operador->id])}}">Remover</a>
-                                                    <a class="dropdown-item" href="{{route('admin.operador.purge',['id'=>$operador->id])}}">Purgar</a>
+                                                    <a class="dropdown-item" href="{{route('admin.telefone.destroy',['id'=>$item->id])}}">Remover</a>
+                                                    <a class="dropdown-item" href="{{route('admin.telefone.purge',['id'=>$item->id])}}">Purgar</a>
                                                 </div>
                                             </div>
 
                                         </td>
                                     </tr>
-                                    {{-- ModalUpdate --}}
-                                    <div class="modal fade text-left" id="ModalEdit{{$operador->id}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h4 class="modal-title">{{ __('Editar Operador') }}</h4>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    @include('admin.operador.edit.index')
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- ModalUpdate --}}
                                     @endforeach
                                 </tbody>
                             </table>
@@ -117,67 +98,64 @@
 
 
 
-{{-- ModalCreate --}}
+{{-- ModalCreateTelefone --}}
 
-<div class="modal fade text-left" id="ModalCreate" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade text-left" id="ModalCreateTelefone" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('Adicionar Operador') }}</h4>
+                <h4 class="modal-title">{{ __('Adicionar Telefone') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                @include('admin.operador.create.index')
+                <form action="{{route('admin.telefone.store')}}" method="post">
+                    @csrf
+                    @include('_form.telefoneForm.index')
+                    <button type="submit" class="btn btn-primary w-md">Cadastrar</button>
+                </form>
             </div>
+
         </div>
     </div>
 </div>
 </div>
-
 {{-- ModalCreate --}}
 
+{{-- ModalUpdate --}}
+<div class="modal fade text-left" id="ModalEdit" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{ __('Editar Telefone') }}</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('admin.telefone.update',$item->id)}}" method="post">
+                    @csrf
+                    @include('_form.telefoneForm.index')
+                    <button type="submit" class="btn btn-primary w-md">Editar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- ModalUpdate --}}
 
-
-@if (session('operador.destroy.success'))
 <script>
-    Swal.fire(
-        'Empresa Eliminada com sucesso!'
-        , ''
-        , 'success'
-    )
+    function ModalEdit(id, vc_telefone, it_estado) {
+        var elementos = document.querySelectorAll('.vc_telefone');
+        if (elementos.length > 0) {
+            elementos.forEach(function(elemento) {
+                elemento.setAttribute('value', vc_telefone);
+            });
+        }
+        $('#ModalEdit').modal('show');
+    }
 
 </script>
-@endif
-@if (session('operador.destroy.error'))
-<script>
-    Swal.fire(
-        'Erro ao Eliminar Empresa!'
-        , ''
-        , 'error'
-    )
 
-</script>
-@endif
-@if (session('operador.purge.success'))
-<script>
-    Swal.fire(
-        'Empresa Purgada com sucesso!'
-        , ''
-        , 'success'
-    )
-
-</script>
-@endif
-@if (session('operador.purge.error'))
-<script>
-    Swal.fire(
-        'Erro ao Purgar Empresa!'
-        , ''
-        , 'error'
-    )
-
-</script>
-@endif
 @endsection
