@@ -40,6 +40,18 @@
                     </li>
                 {{-- </ul> --}}
             </li>
+
+            <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{ route('admin.categoria_titulo_habitante.index') }}"><span class="ml-1 item-text">Categoria Titulo Habitantes</span></a>
+                    </li>
+            </li>
+
+            <li class="nav-item dropdown">
+                <li class="nav-item">
+                    <a class="nav-link pl-3" href="{{ route('admin.categoria_servico.index') }}"><span class="ml-1 item-text">Categoria de serviço</span></a>
+                </li>
+        </li>
             {{-- Logs --}}
         </ul>
     </nav>
