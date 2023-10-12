@@ -65,6 +65,10 @@
             <p class="text-muted nav-heading mt-4 mb-1">
                 <span>Titulos</span>
             </p>
+
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Configuração</span>
+            </p>
         </ul>
     </nav>
   </aside>
