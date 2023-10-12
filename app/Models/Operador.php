@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Operador extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
