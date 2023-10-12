@@ -25,3 +25,17 @@
     <link rel="stylesheet" href="{{ asset('painel/css/app-light.css') }}" id="lightTheme">
     <link rel="stylesheet" href="{{ asset('painel/css/app-dark.css') }}" id="darkTheme" disabled>
 </head>
+
+<style>
+    .botao{
+    color: #212529;
+    background-color: #454d55;
+    border-color: #454d55;
+}
+
+.botao:hover{
+    color: #212529;
+    background-color: #182027;
+    border-color: #454d55;
+}
+</style>
