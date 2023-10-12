@@ -30,8 +30,9 @@
                     </div>
 
                     <div class="col-auto">
+
                         {{-- @can('user-create') --}}
-                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ModalCreate" style="color:white">
+                            <a href="#" class="btn botao" data-toggle="modal" data-target="#ModalCreate" style="color:white">
                                 <span style="color:white"></span> {{ __('Adicionar') }}
                             </a>
                         {{-- @endcan --}}
