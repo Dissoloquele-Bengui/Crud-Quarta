@@ -32,9 +32,9 @@
                     <span class="ml-3 item-text">Operadores</span><span class="sr-only">(current)</span>
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="categoriaPost-collapse">
-                    <li class="nav-item active">
+                    {{-- <li class="nav-item active">
                         <a class="nav-link pl-3" href="{{ route('admin.operador.create') }}"><span class="ml-1 item-text">Cadastrar</span></a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="{{ route('admin.operador.index') }}"><span class="ml-1 item-text">Listar</span></a>
                     </li>
