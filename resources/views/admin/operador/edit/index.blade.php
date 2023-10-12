@@ -1,7 +1,7 @@
-@extends('layouts._includes.admin.body')
+{{-- @extends('layouts._includes.admin.body')
 @section('titulo','Actualizar Operador')
 
-@section('conteudo')
+@section('conteudo') --}}
     <div class="card shadow mb-4">
         <div class="card-header">
         <strong class="card-title">Actualizar Operador</strong>
@@ -35,4 +35,4 @@
     </script>
 @endif
 
-@endsection
+{{-- @endsection --}}
