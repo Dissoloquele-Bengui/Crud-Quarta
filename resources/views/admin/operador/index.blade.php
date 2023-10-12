@@ -89,7 +89,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    @include('admin.operador.create.index')
+                                    @include('admin.operador.edit.index')
                                     </div>
                                 </div>
                             </div>
