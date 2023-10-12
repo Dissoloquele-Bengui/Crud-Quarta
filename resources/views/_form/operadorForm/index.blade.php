@@ -2,7 +2,7 @@
     <div class="col-md-6">
         <div class="form-group mb-3">
             <label for="vc_nome">Nome</label>
-            <input type="text" id="vc_nome" name="vc_nome" class="form-control" value="{{ isset($operador->vc_nome) ? $operador->vc_nome : '' }}">
+            <input type="text" id="vc_nome" name="vc_nome" class="form-control" value="{{isset($operador) ?$operador->vc_nome: old('vc_nome') }}">
         </div>
     </div> <!-- /.col -->
 
