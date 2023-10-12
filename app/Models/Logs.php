@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Logs extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'it_id_user',
         'vc_descricao',

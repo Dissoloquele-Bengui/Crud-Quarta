@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('vc_frequencia')->nullable();
             $table->string('vc_numeracao')->nullable();
             $table->integer('it_estado')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

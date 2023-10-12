@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('vc_tecnologia_usada')->nullable();
             $table->string('vc_site_oficial')->nullable();
             $table->integer('it_estado')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }
