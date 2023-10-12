@@ -3,9 +3,9 @@
 
 {{-- @section('conteudo') --}}
     <div class="card shadow mb-4">
-        <div class="card-header">
+        {{-- <div class="card-header">
         <strong class="card-title">Cadastrar Operador</strong>
-        </div>
+        </div> --}}
         <form action="{{route('admin.operador.store')}}" method="post">
             @csrf
             <div class="card-body">

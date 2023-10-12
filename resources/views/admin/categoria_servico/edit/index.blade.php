@@ -3,9 +3,9 @@
 
 @section('conteudo') --}}
     <div class="card shadow mb-4">
-        <div class="card-header">
+        {{-- <div class="card-header">
         <strong class="card-title">Actualizar Categoria de Serviço</strong>
-        </div>
+        </div> --}}
         <form action="{{ route('admin.categoria_servico.update', ['id' => $categoria_servico->id]) }}
 " method="post">
             @csrf
