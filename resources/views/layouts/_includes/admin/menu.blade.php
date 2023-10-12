@@ -36,26 +36,27 @@
                         <a class="nav-link pl-3" href="{{ route('admin.operador.create') }}"><span class="ml-1 item-text">Cadastrar</span></a>
                     </li> --}}
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="{{ route('admin.operador.index') }}"><span class="ml-1 item-text">Operadores</span></a>
+
+                        <a class="nav-link pl-3" href="{{ route('admin.operador.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Operadores</span></a>
                     </li>
                 {{-- </ul> --}}
             </li>
 
             <li class="nav-item dropdown">
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="{{ route('admin.categoria_titulo_habitante.index') }}"><span class="ml-1 item-text">Categoria Titulo Habitantes</span></a>
+                        <a class="nav-link pl-3" href="{{ route('admin.categoria_titulo_habitante.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Categoria Titulo Habitantes</span></a>
                     </li>
             </li>
 
             <li class="nav-item dropdown">
                 <li class="nav-item">
-                    <a class="nav-link pl-3" href="{{ route('admin.categoria_servico.index') }}"><span class="ml-1 item-text">Categoria de serviço</span></a>
+                    <a class="nav-link pl-3" href="{{ route('admin.categoria_servico.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Categoria de serviço</span></a>
                 </li>
         </li>
 
         <li class="nav-item dropdown">
             <li class="nav-item">
-                <a class="nav-link pl-3" href="{{ route('admin.frequencia_numeracao.index') }}"><span class="ml-1 item-text">Frequência|Numeração</span></a>
+                <a class="nav-link pl-3" href="{{ route('admin.frequencia_numeracao.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Frequência|Numeração</span></a>
             </li>
     </li>
             {{-- Logs --}}
