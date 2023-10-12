@@ -22,9 +22,9 @@
                     <span class="ml-3 item-text">Dashboard</span><span class="sr-only">(current)</span>
                 </a>
             </li>
-            {{-- <p class="text-muted nav-heading mt-4 mb-1">
-                <span>Loja</span>
-            </p> --}}
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Categorias</span>
+            </p>
 
            <li class="nav-item dropdown">
                 {{-- <a href="#categoriaPost-collapse" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
@@ -60,6 +60,11 @@
             </li>
     </li>
             {{-- Logs --}}
+
+
+            <p class="text-muted nav-heading mt-4 mb-1">
+                <span>Titulos</span>
+            </p>
         </ul>
     </nav>
   </aside>
