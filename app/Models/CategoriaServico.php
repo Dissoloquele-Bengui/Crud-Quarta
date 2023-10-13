@@ -6,14 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Logs extends Model
+class CategoriaServico extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'it_id_user',
-        'vc_descricao',
-        'vc_endereco',
-        'vc_dispositivo',
+    'vc_nome',
+    'it_estado',
     ];
+    protected $table = 'categoria_servicos';
+
 }

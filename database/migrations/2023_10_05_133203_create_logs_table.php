@@ -17,6 +17,7 @@ return new class extends Migration
             $table->longtext('vc_descricao');
             $table->string('vc_endereco');
             $table->string('vc_dispositivo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

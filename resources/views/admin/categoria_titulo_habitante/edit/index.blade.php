@@ -4,19 +4,19 @@
 @section('conteudo') --}}
     <div class="card shadow mb-4">
         {{-- <div class="card-header">
-        <strong class="card-title">Actualizar Operador</strong>
+        <strong class="card-title">Actualizar Categoria Titulo Habitante</strong>
         </div> --}}
-        <form action="{{ route('admin.operador.update', ['id' => $operador->id]) }}
+        <form action="{{ route('admin.categoria_titulo_habitante.update', ['id' => $categoria_titulo_habitante->id]) }}
 " method="post">
             @csrf
             <div class="card-body">
-                @include('_form.operadorForm.index')
+                @include('_form.categoriaTituloHabitanteForm.index')
                 <button type="submit" class="btn btn-primary w-md">Actualizar</button>
             </div>
         </form>
     </div>
 
-@if (session('operador.update.success'))
+@if (session('categoria_titulo_habitante.update.success'))
     <script>
         Swal.fire(
             'Categoria Actualizada com sucesso!',
@@ -25,7 +25,7 @@
         )
     </script>
 @endif
-@if (session('operador.update.error'))
+@if (session('categoria_titulo_habitante.update.error'))
     <script>
         Swal.fire(
             'Erro ao Actualizar Categoria!',

@@ -191,43 +191,39 @@
 
 
 @if (session('operador.destroy.success'))
-<script>
-    Swal.fire(
-        'Empresa Eliminada com sucesso!'
-        , ''
-        , 'success'
-    )
-
-</script>
+    <script>
+        Swal.fire(
+            'Operador Eliminada com sucesso!',
+            '',
+            'success'
+        )
+    </script>
 @endif
 @if (session('operador.destroy.error'))
-<script>
-    Swal.fire(
-        'Erro ao Eliminar Empresa!'
-        , ''
-        , 'error'
-    )
-
-</script>
+    <script>
+        Swal.fire(
+            'Erro ao Eliminar Operador!',
+            '',
+            'error'
+        )
+    </script>
 @endif
 @if (session('operador.purge.success'))
-<script>
-    Swal.fire(
-        'Empresa Purgada com sucesso!'
-        , ''
-        , 'success'
-    )
-
-</script>
+    <script>
+        Swal.fire(
+            'Operador Purgada com sucesso!',
+            '',
+            'success'
+        )
+    </script>
 @endif
 @if (session('operador.purge.error'))
-<script>
-    Swal.fire(
-        'Erro ao Purgar Empresa!'
-        , ''
-        , 'error'
-    )
-
-</script>
+    <script>
+        Swal.fire(
+            'Erro ao Purgar Operador!',
+            '',
+            'error'
+        )
+    </script>
 @endif
 @endsection

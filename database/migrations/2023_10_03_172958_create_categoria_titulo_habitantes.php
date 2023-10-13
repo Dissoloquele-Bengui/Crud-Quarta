@@ -13,14 +13,9 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('operadores', function (Blueprint $table) {
+        Schema::create('categoria_titulo_habitantes', function (Blueprint $table) {
             $table->id();
             $table->string('vc_nome');
-            $table->string('vc_nif');
-            $table->year('yr_ano_fundacao');
-            $table->string('vc_zona_geografica_actuacao')->nullable();
-            $table->string('vc_tecnologia_usada')->nullable();
-            $table->string('vc_site_oficial')->nullable();
             $table->integer('it_estado')->default(1);
             $table->softDeletes();
             $table->timestamps();
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('operadores');
+        Schema::dropIfExists('categoria_titulo_habitantes');
     }
 };
