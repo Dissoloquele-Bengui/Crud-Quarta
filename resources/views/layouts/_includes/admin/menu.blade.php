@@ -83,6 +83,18 @@
                 <a class="nav-link pl-3" href="{{ route('admin.ponto_focal.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Ponto Focal</span></a>
             </li>
             </li>
+
+             <li class="nav-item dropdown">
+            <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('admin.servico_licenciado.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Serviço Licenciado</span></a>
+            </li>
+            </li>
+
+              <li class="nav-item dropdown">
+            <li class="nav-item">
+                <a class="nav-link pl-3" href="{{ route('admin.motivo_revogacao_licenca.index') }}"> <i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">Revogação licença</span></a>
+            </li>
+            </li>
             {{-- Logs --}}
 
 

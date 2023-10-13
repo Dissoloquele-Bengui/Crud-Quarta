@@ -131,6 +131,34 @@ Route::prefix('email')->group(function () {
 
 /*END EMAIL*/
 
+/*START EMAIL*/
+Route::prefix('serviço-licenciado')->group(function () {
+    Route::get('index', ['as' => 'admin.servico_licenciado.index', 'uses' => 'Admin\ServicoLicenciadoController@index']);
+    Route::get('create', ['as' => 'admin.servico_licenciado.create', 'uses' => 'Admin\ServicoLicenciadoController@create']);
+    Route::post('store', ['as' => 'admin.servico_licenciado.store', 'uses' => 'Admin\ServicoLicenciadoController@store']);
+    Route::get('show/{id}', ['as' => 'admin.servico_licenciado.show', 'uses' => 'Admin\ServicoLicenciadoController@show']);
+    Route::get('edit/{id}', ['as' => 'admin.servico_licenciado.edit', 'uses' => 'Admin\ServicoLicenciadoController@edit']);
+    Route::post('update/{id}', ['as' => 'admin.servico_licenciado.update', 'uses' => 'Admin\ServicoLicenciadoController@update']);
+    Route::get('destroy/{id}', ['as' => 'admin.servico_licenciado.destroy', 'uses' => 'Admin\ServicoLicenciadoController@destroy']);
+    Route::get('purge/{id}', ['as' => 'admin.servico_licenciado.purge', 'uses' => 'Admin\ServicoLicenciadoController@purge']);
+});
+
+/*END EMAIL*/
+
+/*START EMAIL*/
+Route::prefix('motivo-revogação-licença')->group(function () {
+    Route::get('index', ['as' => 'admin.motivo_revogacao_licenca.index', 'uses' => 'Admin\MotivoRevogacaoLicencaController@index']);
+    Route::get('create', ['as' => 'admin.motivo_revogacao_licenca.create', 'uses' => 'Admin\MotivoRevogacaoLicencaController@create']);
+    Route::post('store', ['as' => 'admin.motivo_revogacao_licenca.store', 'uses' => 'Admin\MotivoRevogacaoLicencaController@store']);
+    Route::get('show/{id}', ['as' => 'admin.motivo_revogacao_licenca.show', 'uses' => 'Admin\MotivoRevogacaoLicencaController@show']);
+    Route::get('edit/{id}', ['as' => 'admin.motivo_revogacao_licenca.edit', 'uses' => 'Admin\MotivoRevogacaoLicencaController@edit']);
+    Route::post('update/{id}', ['as' => 'admin.motivo_revogacao_licenca.update', 'uses' => 'Admin\MotivoRevogacaoLicencaController@update']);
+    Route::get('destroy/{id}', ['as' => 'admin.motivo_revogacao_licenca.destroy', 'uses' => 'Admin\MotivoRevogacaoLicencaController@destroy']);
+    Route::get('purge/{id}', ['as' => 'admin.motivo_revogacao_licenca.purge', 'uses' => 'Admin\MotivoRevogacaoLicencaController@purge']);
+});
+
+/*END EMAIL*/
+
 
 
 
