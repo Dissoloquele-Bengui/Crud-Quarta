@@ -44,20 +44,24 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th width="5%">ID</th>
-                                        <th width="25%">Primeiro nome</th>
-                                        <th width="20%">Nome do meio</th>
-                                        <th width="25%">Último nome</th>
-                                        <th width="20%">Estado</th>
+                                        <th width="15%">Rua</th>
+                                        <th width="15%">Bairro</th>
+                                        <th width="15%">Município</th>
+                                        <th width="15%">Província</th>
+                                        <th width="15%">Complemento</th>
+                                        <th width="15%">Estado</th>
                                         <th width="5%">Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($ponto_focals as $key => $item)
+                                    @foreach ($morada_sedes as $key => $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{{$item->vc_pNome}}}</td>
-                                        <td>{{{$item->vc_nomeMeio}}}</td>
-                                        <td>{{{$item->vc_uNome}}}</td>
+                                        <td>{{{$item->vc_rua}}}</td>
+                                        <td>{{{$item->vc_bairro}}}</td>
+                                        <td>{{{$item->vc_municipio}}}</td>
+                                        <td>{{{$item->vc_provincia}}}</td>
+                                        <td>{{{$item->vc_complemento}}}</td>
                                         <td>
                                             @if($item->it_estado==1)
                                             Activo
@@ -73,8 +77,8 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$item->id}}">{{ __('Editar') }}</a>
                                                     {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
-                                                    <a class="dropdown-item" href="{{route('admin.ponto_focal.destroy',['id'=>$item->id])}}">Remover</a>
-                                                    <a class="dropdown-item" href="{{route('admin.ponto_focal.purge',['id'=>$item->id])}}">Purgar</a>
+                                                    <a class="dropdown-item" href="{{route('admin.morada_sede.destroy',['id'=>$item->id])}}">Remover</a>
+                                                    <a class="dropdown-item" href="{{route('admin.morada_sede.purge',['id'=>$item->id])}}">Purgar</a>
                                                 </div>
                                             </div>
 
@@ -86,15 +90,15 @@
                                         <div class="modal-dialog modal-lg" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">{{ __('Editar Ponto Focal') }}</h4>
+                                                    <h4 class="modal-title">{{ __('Editar Morada Sede') }}</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{route('admin.ponto_focal.update',$item->id)}}" method="post">
+                                                    <form action="{{route('admin.morada_sede.update',$item->id)}}" method="post">
                                                         @csrf
-                                                        @include('_form.pontoFocalForm.index')
+                                                        @include('_form.MoradaSedeForm.index')
                                                         <button type="submit" class="btn btn-primary w-md">Editar</button>
                                                     </form>
                                                 </div>
@@ -105,9 +109,11 @@
                                     @endforeach
                                     @if(isset($item))
                                     @php
-                                    $item->vc_pNome = null;
-                                    $item->vc_nomeMeio = null;
-                                    $item->vc_uNome = null;
+                                    $item->vc_rua = null;
+                                    $item->vc_bairro = null;
+                                    $item->vc_municipio = null;
+                                    $item->vc_provincia = null;
+                                    $item->vc_complemento = null;
                                     @endphp
                                     @endif
                                 </tbody>
@@ -137,15 +143,15 @@
     <div class="modal-dialog  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('Adicionar Ponto Focal') }}</h4>
+                <h4 class="modal-title">{{ __('Adicionar Morada Sede') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('admin.ponto_focal.store')}}" method="post">
+                <form action="{{route('admin.morada_sede.store')}}" method="post">
                     @csrf
-                    @include('_form.pontoFocalForm.index')
+                    @include('_form.MoradaSedeForm.index')
                     <button type="submit" class="btn btn-primary w-md">Cadastrar</button>
                 </form>
             </div>

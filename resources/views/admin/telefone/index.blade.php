@@ -53,7 +53,7 @@
                                     @foreach ($telefones as $key => $item)
                                     <tr>
                                         <td>{{$key+1}}</td>
-                                        <td>{{{$item->vc_telefone}}}</td>
+                                        <td>{{{$item->vc_numero}}}</td>
                                         <td>
                                             @if($item->it_estado==1)
                                             Activo
@@ -67,7 +67,7 @@
                                                     <span class="text-muted sr-only">Action</span>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#" onclick="ModalEdit('{{$item->id}}', '{{$item->vc_telefone}}', '{{$item->it_estado}}')" data-toggle="modal" data-target="#ModalEdit{{$item->id}}">{{ __('Editar') }}</a>
+                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$item->id}}">{{ __('Editar') }}</a>
                                                     {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
                                                     <a class="dropdown-item" href="{{route('admin.telefone.destroy',['id'=>$item->id])}}">Remover</a>
                                                     <a class="dropdown-item" href="{{route('admin.telefone.purge',['id'=>$item->id])}}">Purgar</a>
@@ -76,7 +76,34 @@
 
                                         </td>
                                     </tr>
+
+                                    {{-- ModalUpdate --}}
+                                    <div class="modal fade text-left" id="ModalEdit{{$item->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title">{{ __('Editar Telefone') }}</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{route('admin.telefone.update',$item->id)}}" method="post">
+                                                        @csrf
+                                                        @include('_form.telefoneForm.index')
+                                                        <button type="submit" class="btn btn-primary w-md">Editar</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- ModalUpdate --}}
                                     @endforeach
+                                    @if(isset($item))
+                                        @php
+                                            $item->vc_numero = null;
+                                        @endphp
+                                    @endif
                                 </tbody>
                             </table>
                             <nav aria-label="Table Paging" class="mb-0 text-muted">
@@ -122,40 +149,5 @@
 </div>
 </div>
 {{-- ModalCreate --}}
-
-{{-- ModalUpdate --}}
-<div class="modal fade text-left" id="ModalEdit" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">{{ __('Editar Telefone') }}</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{route('admin.telefone.update',$item->id)}}" method="post">
-                    @csrf
-                    @include('_form.telefoneForm.index')
-                    <button type="submit" class="btn btn-primary w-md">Editar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- ModalUpdate --}}
-
-<script>
-    function ModalEdit(id, vc_telefone, it_estado) {
-        var elementos = document.querySelectorAll('.vc_telefone');
-        if (elementos.length > 0) {
-            elementos.forEach(function(elemento) {
-                elemento.setAttribute('value', vc_telefone);
-            });
-        }
-        $('#ModalEdit').modal('show');
-    }
-
-</script>
 
 @endsection

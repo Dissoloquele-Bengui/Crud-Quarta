@@ -1,5 +1,5 @@
 @extends('layouts._includes.admin.body')
-@section('titulo','Listar Pontos Focais')
+@section('titulo','Listar Email')
 
 @section('conteudo')
 <div class="container-fluid">
@@ -44,20 +44,16 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th width="5%">ID</th>
-                                        <th width="25%">Primeiro nome</th>
-                                        <th width="20%">Nome do meio</th>
-                                        <th width="25%">Último nome</th>
+                                        <th width="70%">Email</th>
                                         <th width="20%">Estado</th>
                                         <th width="5%">Opções</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($ponto_focals as $key => $item)
+                                    @foreach ($emails as $key => $item)
                                     <tr>
                                         <td>{{$item->id}}</td>
-                                        <td>{{{$item->vc_pNome}}}</td>
-                                        <td>{{{$item->vc_nomeMeio}}}</td>
-                                        <td>{{{$item->vc_uNome}}}</td>
+                                        <td>{{{$item->vc_email}}}</td>
                                         <td>
                                             @if($item->it_estado==1)
                                             Activo
@@ -73,8 +69,8 @@
                                                 <div class="dropdown-menu dropdown-menu-right">
                                                     <a class="dropdown-item" href="#" data-toggle="modal" data-target="#ModalEdit{{$item->id}}">{{ __('Editar') }}</a>
                                                     {{-- <a class="dropdown-item" href="{{route('admin.operador.edit',['id'=>$operador->id])}}">Editar</a> --}}
-                                                    <a class="dropdown-item" href="{{route('admin.ponto_focal.destroy',['id'=>$item->id])}}">Remover</a>
-                                                    <a class="dropdown-item" href="{{route('admin.ponto_focal.purge',['id'=>$item->id])}}">Purgar</a>
+                                                    <a class="dropdown-item" href="{{route('admin.email.destroy',['id'=>$item->id])}}">Remover</a>
+                                                    <a class="dropdown-item" href="{{route('admin.email.purge',['id'=>$item->id])}}">Purgar</a>
                                                 </div>
                                             </div>
 
@@ -83,18 +79,18 @@
 
                                     {{-- ModalUpdate --}}
                                     <div class="modal fade text-left" id="ModalEdit{{$item->id}}" tabindex="-1" role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h4 class="modal-title">{{ __('Editar Ponto Focal') }}</h4>
+                                                    <h4 class="modal-title">{{ __('Editar Email') }}</h4>
                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{route('admin.ponto_focal.update',$item->id)}}" method="post">
+                                                    <form action="{{route('admin.email.update',$item->id)}}" method="post">
                                                         @csrf
-                                                        @include('_form.pontoFocalForm.index')
+                                                        @include('_form.emailForm.index')
                                                         <button type="submit" class="btn btn-primary w-md">Editar</button>
                                                     </form>
                                                 </div>
@@ -105,9 +101,7 @@
                                     @endforeach
                                     @if(isset($item))
                                     @php
-                                    $item->vc_pNome = null;
-                                    $item->vc_nomeMeio = null;
-                                    $item->vc_uNome = null;
+                                    $item->vc_email = null;
                                     @endphp
                                     @endif
                                 </tbody>
@@ -134,18 +128,18 @@
 {{-- ModalCreateTelefone --}}
 
 <div class="modal fade text-left" id="ModalCreate" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog  modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">{{ __('Adicionar Ponto Focal') }}</h4>
+                <h4 class="modal-title">{{ __('Adicionar Email') }}</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('admin.ponto_focal.store')}}" method="post">
+                <form action="{{route('admin.email.store')}}" method="post">
                     @csrf
-                    @include('_form.pontoFocalForm.index')
+                    @include('_form.emailForm.index')
                     <button type="submit" class="btn btn-primary w-md">Cadastrar</button>
                 </form>
             </div>

@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('telefones', function (Blueprint $table) {
+        Schema::create('morada_sedes', function (Blueprint $table) {
             $table->id();
-            $table->string('vc_numero')->unique();
+            $table->string('vc_rua');
+            $table->string('vc_provincia');
+            $table->string('vc_municipio');
+            $table->string('vc_bairro');
+            $table->string('vc_complemento');
             $table->integer('it_estado')->default(1);
             $table->timestamps();
         });
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('telefones');
+        Schema::dropIfExists('morada_sedes');
     }
 };

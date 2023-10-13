@@ -38,12 +38,14 @@ class PontoFocalController extends Controller
      public function store(Request $request){
 
         try{
-            $telefone=Telefone::create([
-                'vc_telefone'=>$request->vc_telefone,
-                'it_eatado' =>$request->it_eatado,
+            $ponto_focal=PontoFocal::create([
+                'vc_pNome'=>$request->vc_pNome,
+                'vc_nomeMeio' =>$request->vc_nomeMeio,
+                'vc_uNome'=>$request->vc_uNome,
+                'it_estado' =>$request->it_estado,
             ]);
 
-             $this->loggerData(" Cadastrou telefone " . $request->vc_telefone);
+             $this->loggerData(" Cadastrou Ponto Focal " . $request->vc_pNome." ". $request->vc_nomeMeio." ".$request->vc_uNome);
 
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Cadastrado com sucesso']);
         } catch (\Throwable $th) {
@@ -68,14 +70,16 @@ class PontoFocalController extends Controller
      {
        try {
              //code...
-             $telefone = Telefone::find($id);
+             $ponto_focal = PontoFocal::find($id);
 
-             Telefone::findOrFail($id)->update([
-                'vc_telefone'=>$request->vc_telefone,
-                'it_estado'=> $request->it_estado
+             PontoFocal::findOrFail($id)->update([
+                'vc_pNome'=>$request->vc_pNome,
+                'vc_nomeMeio' =>$request->vc_nomeMeio,
+                'vc_uNome'=>$request->vc_uNome,
+                'it_estado' =>$request->it_estado
              ]);
             
-            $this->loggerData("Editou o telefone que possui o id $telefone->id  e nome  $telefone->vc_telefone");
+            $this->loggerData("Editou o telefone que possui o id $ponto_focal->id  e nome  $ponto_focal->vc_pNome $ponto_focal->vc_nomeMeio $ponto_focal->vc_uNome");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Editado com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao editar']);
@@ -92,10 +96,10 @@ class PontoFocalController extends Controller
         //
         try {
             //code...
-            $telefone =Telefone::findOrFail( $id);
+            $ponto_focal =PontoFocal::findOrFail( $id);
 
-            Telefone::findOrFail($id)->delete();
-            $this->loggerData(" Eliminou o telefone , ($telefone->vc_telefone)");
+            PontoFocal::findOrFail($id)->delete();
+            $this->loggerData(" Eliminou o ponto foval , ($ponto_focal->vc_pNome $ponto_focal->vc_nomeMeio $ponto_focal->vc_uNome)");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Eliminado com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao eliminar']);
@@ -107,9 +111,9 @@ class PontoFocalController extends Controller
         //
         try {
             //code...
-            $telefone = Telefone::findOrFail($id);
-            Telefone::findOrFail($id)->forceDelete();
-            $this->loggerData(" Purgou o telefone ($telefone->vc_telefone)");
+            $ponto_focal = PontoFocal::findOrFail($id);
+            PontoFocal::findOrFail($id)->forceDelete();
+            $this->loggerData(" Purgou o ponto foval , ($ponto_focal->vc_pNome $ponto_focal->vc_nomeMeio $ponto_focal->vc_uNome)");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Purgou com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao purgar']);

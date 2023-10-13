@@ -46,6 +46,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.ponto_focal.index') }}"><i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">   Pontos focais</span></a>
             </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.morada_sede.index') }}"><i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">   Morada sede</span></a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.email.index') }}"><i class="fe fe-file-text fe-16"></i><span class="ml-1 item-text">   Email</span></a>
+            </li>
             {{-- Logs --}}
         </ul>
     </nav>

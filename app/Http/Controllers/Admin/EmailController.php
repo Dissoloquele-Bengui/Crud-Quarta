@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Telefone;
+use App\Models\Email;
 use App\Models\Logger;
 use Illuminate\Http\Request;
 
-class TelefoneController extends Controller
+class EmailController extends Controller
 {
 
 
@@ -22,19 +22,10 @@ class TelefoneController extends Controller
 
 
     public function index(){
-        $data['telefones']=Telefone::all();
-        $this->loggerData("Listou Telefones");
+        $data['emails']=Email::all();
+        $this->loggerData("Listou Pontos Focais");
+        return view('admin.email.index', $data);
 
-        return view('admin.telefone.index', $data);
-
-    }
-
-
-
-    public function create(){
-
-
-        return view('admin.telefone.create.index');
     }
 
     /**
@@ -47,12 +38,12 @@ class TelefoneController extends Controller
      public function store(Request $request){
 
         try{
-            $telefone=Telefone::create([
-                'vc_numero'=>$request->vc_numero,
+            $email=Email::create([
+                'vc_email'=>$request->vc_email,
                 'it_estado' =>$request->it_estado,
             ]);
 
-             $this->loggerData(" Cadastrou telefone " . $request->vc_numero);
+             $this->loggerData(" Cadastrou Email " . $request->vc_email);
 
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Cadastrado com sucesso']);
         } catch (\Throwable $th) {
@@ -61,26 +52,6 @@ class TelefoneController extends Controller
 
 
      }
-
-
-      /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(int $id)
-    {
-        //
-    }
-
-    public function edit(int $id)
-    {
-        //
-        $data["operador"] = Operador::find($id);
-
-        return view('admin.operador.edit.index',$data);
-    }
 
 
     /**
@@ -97,14 +68,14 @@ class TelefoneController extends Controller
      {
        try {
              //code...
-             $telefone = Telefone::find($id);
+             $email = Email::find($id);
 
-             Telefone::findOrFail($id)->update([
-                'vc_numero'=>$request->vc_numero,
-                'it_estado'=> $request->it_estado
+             Email::findOrFail($id)->update([
+                'vc_email'=>$request->vc_email,
+                'it_estado' =>$request->it_estado
              ]);
             
-            $this->loggerData("Editou o telefone que possui o id $telefone->id  e nome  $telefone->vc_numero");
+            $this->loggerData("Editou o email que possui o id $email->id  e email  $email->email");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Editado com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao editar']);
@@ -121,10 +92,10 @@ class TelefoneController extends Controller
         //
         try {
             //code...
-            $telefone =Telefone::findOrFail( $id);
+            $email =Email::findOrFail( $id);
 
-            Telefone::findOrFail($id)->delete();
-            $this->loggerData(" Eliminou o telefone , ($telefone->vc_numero)");
+            Email::findOrFail($id)->delete();
+            $this->loggerData(" Eliminou o email , ($email->vc_email)");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Eliminado com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao eliminar']);
@@ -136,9 +107,9 @@ class TelefoneController extends Controller
         //
         try {
             //code...
-            $telefone = Telefone::findOrFail($id);
-            Telefone::findOrFail($id)->forceDelete();
-            $this->loggerData(" Purgou o telefone ($telefone->vc_numero)");
+            $email = Email::findOrFail($id);
+            Email::findOrFail($id)->forceDelete();
+            $this->loggerData(" Purgou o email , ($email->vc_email)");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Purgou com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao purgar']);

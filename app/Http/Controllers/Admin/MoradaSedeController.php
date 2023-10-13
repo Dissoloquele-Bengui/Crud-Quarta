@@ -1,11 +1,11 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Telefone;
+use App\Models\MoradaSede;
 use App\Models\Logger;
 use Illuminate\Http\Request;
 
-class TelefoneController extends Controller
+class MoradaSedeController extends Controller
 {
 
 
@@ -22,19 +22,10 @@ class TelefoneController extends Controller
 
 
     public function index(){
-        $data['telefones']=Telefone::all();
-        $this->loggerData("Listou Telefones");
+        $data['morada_sedes']=MoradaSede::all();
+        $this->loggerData("Listou Morada sede");
+        return view('admin.morada_sede.index', $data);
 
-        return view('admin.telefone.index', $data);
-
-    }
-
-
-
-    public function create(){
-
-
-        return view('admin.telefone.create.index');
     }
 
     /**
@@ -45,14 +36,17 @@ class TelefoneController extends Controller
      */
 
      public function store(Request $request){
-
         try{
-            $telefone=Telefone::create([
-                'vc_numero'=>$request->vc_numero,
+            $morada_sede=MoradaSede::create([
+                'vc_rua'=>$request->vc_rua,
+                'vc_provincia' =>$request->vc_provincia,
+                'vc_municipio'=>$request->vc_municipio,
+                'vc_bairro' =>$request->vc_bairro,
+                'vc_complemento'=>$request->vc_complemento,
                 'it_estado' =>$request->it_estado,
             ]);
 
-             $this->loggerData(" Cadastrou telefone " . $request->vc_numero);
+             $this->loggerData(" Cadastrou morada sede " . $request->vc_rua.", ". $request->vc_bairro.". ". $request->vc_municipio.", ".$request->vc_provincia);
 
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Cadastrado com sucesso']);
         } catch (\Throwable $th) {
@@ -61,26 +55,6 @@ class TelefoneController extends Controller
 
 
      }
-
-
-      /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(int $id)
-    {
-        //
-    }
-
-    public function edit(int $id)
-    {
-        //
-        $data["operador"] = Operador::find($id);
-
-        return view('admin.operador.edit.index',$data);
-    }
 
 
     /**
@@ -97,14 +71,18 @@ class TelefoneController extends Controller
      {
        try {
              //code...
-             $telefone = Telefone::find($id);
+             $morada_sede = MoradaSede::find($id);
 
-             Telefone::findOrFail($id)->update([
-                'vc_numero'=>$request->vc_numero,
-                'it_estado'=> $request->it_estado
+             MoradaSede::findOrFail($id)->update([
+                'vc_rua'=>$request->vc_rua,
+                'vc_provincia' =>$request->vc_provincia,
+                'vc_municipio'=>$request->vc_municipio,
+                'vc_bairro' =>$request->vc_bairro,
+                'vc_complemento'=>$request->vc_complemento,
+                'it_estado' =>$request->it_estado,
              ]);
             
-            $this->loggerData("Editou o telefone que possui o id $telefone->id  e nome  $telefone->vc_numero");
+            $this->loggerData("Editou morada sede " . $request->vc_rua.", ". $request->vc_bairro.". ". $request->vc_municipio.", ".$request->vc_provincia);
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Editado com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao editar']);
@@ -121,10 +99,10 @@ class TelefoneController extends Controller
         //
         try {
             //code...
-            $telefone =Telefone::findOrFail( $id);
+            $morada_sede =MoradaSede::findOrFail( $id);
 
-            Telefone::findOrFail($id)->delete();
-            $this->loggerData(" Eliminou o telefone , ($telefone->vc_numero)");
+            MoradaSede::findOrFail($id)->delete();
+            $this->loggerData(" Eliminou a morada sede , (" . $morada_sede->vc_rua.", ". $morada_sede->vc_bairro.". ". $morada_sede->vc_municipio.", ".$morada_sede->vc_provincia." )");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Eliminado com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao eliminar']);
@@ -136,9 +114,9 @@ class TelefoneController extends Controller
         //
         try {
             //code...
-            $telefone = Telefone::findOrFail($id);
-            Telefone::findOrFail($id)->forceDelete();
-            $this->loggerData(" Purgou o telefone ($telefone->vc_numero)");
+            $morada_sede =MoradaSede::findOrFail( $id);
+            MoradaSede::findOrFail($id)->forceDelete();
+            $this->loggerData(" Eliminou a morada sede , (" . $morada_sede->vc_rua.", ". $morada_sede->vc_bairro.". ". $morada_sede->vc_municipio.", ".$morada_sede->vc_provincia." )");
             return redirect()->back()->with('success', ['status' => '1', 'sms' => 'Purgou com sucesso']);
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', ['status' => '1', 'sms' => 'Erro ao purgar']);
