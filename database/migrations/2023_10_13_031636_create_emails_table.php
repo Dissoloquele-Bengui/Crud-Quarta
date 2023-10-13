@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('vc_email')->unique();
             $table->integer('it_estado')->default(1);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

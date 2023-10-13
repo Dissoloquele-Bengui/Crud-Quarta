@@ -43,7 +43,6 @@ class MoradaSedeController extends Controller
                 'vc_municipio'=>$request->vc_municipio,
                 'vc_bairro' =>$request->vc_bairro,
                 'vc_complemento'=>$request->vc_complemento,
-                'it_estado' =>$request->it_estado,
             ]);
 
              $this->loggerData(" Cadastrou morada sede " . $request->vc_rua.", ". $request->vc_bairro.". ". $request->vc_municipio.", ".$request->vc_provincia);
@@ -79,7 +78,6 @@ class MoradaSedeController extends Controller
                 'vc_municipio'=>$request->vc_municipio,
                 'vc_bairro' =>$request->vc_bairro,
                 'vc_complemento'=>$request->vc_complemento,
-                'it_estado' =>$request->it_estado,
              ]);
             
             $this->loggerData("Editou morada sede " . $request->vc_rua.", ". $request->vc_bairro.". ". $request->vc_municipio.", ".$request->vc_provincia);

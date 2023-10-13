@@ -40,7 +40,6 @@ class EmailController extends Controller
         try{
             $email=Email::create([
                 'vc_email'=>$request->vc_email,
-                'it_estado' =>$request->it_estado,
             ]);
 
              $this->loggerData(" Cadastrou Email " . $request->vc_email);
@@ -72,7 +71,6 @@ class EmailController extends Controller
 
              Email::findOrFail($id)->update([
                 'vc_email'=>$request->vc_email,
-                'it_estado' =>$request->it_estado
              ]);
             
             $this->loggerData("Editou o email que possui o id $email->id  e email  $email->email");

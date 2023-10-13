@@ -25,15 +25,6 @@
     </div>
     <div class="col-md-6">
         <div class="form-group mb-3">
-            <label for="vc_telefone">Estado do ponto focal</label>
-            <select class="form-control" name="it_estado">
-                <option value="1">Activo</option>
-                <option value="0">Inactico</option>
-            </select>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="form-group mb-3">
             <label for="vc_complemento">Complemento</label>
             <textarea name="vc_complemento" class="form-control">{{isset($item) ?$item->vc_complemento: old('vc_complemento') }}</textarea>
         </div>

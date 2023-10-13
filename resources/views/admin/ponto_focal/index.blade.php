@@ -31,7 +31,7 @@
 
                                         <div class="col-auto">
                                             {{-- @can('user-create') --}}
-                                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ModalCreate" style="color:white">
+                                            <a href="#" class="btn botao" data-toggle="modal" data-target="#ModalCreate" style="color:white">
                                                 <span style="color:white"></span> {{ __('Adicionar') }}
                                             </a>
                                             {{-- @endcan --}}
@@ -44,10 +44,9 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th width="5%">ID</th>
-                                        <th width="25%">Primeiro nome</th>
-                                        <th width="20%">Nome do meio</th>
-                                        <th width="25%">Último nome</th>
-                                        <th width="20%">Estado</th>
+                                        <th width="35%">Primeiro nome</th>
+                                        <th width="25%">Nome do meio</th>
+                                        <th width="30%">Último nome</th>
                                         <th width="5%">Opções</th>
                                     </tr>
                                 </thead>
@@ -58,13 +57,6 @@
                                         <td>{{{$item->vc_pNome}}}</td>
                                         <td>{{{$item->vc_nomeMeio}}}</td>
                                         <td>{{{$item->vc_uNome}}}</td>
-                                        <td>
-                                            @if($item->it_estado==1)
-                                            Activo
-                                            @else
-                                            Inactivo
-                                            @endif
-                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

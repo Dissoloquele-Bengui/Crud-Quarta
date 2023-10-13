@@ -49,7 +49,6 @@ class TelefoneController extends Controller
         try{
             $telefone=Telefone::create([
                 'vc_numero'=>$request->vc_numero,
-                'it_estado' =>$request->it_estado,
             ]);
 
              $this->loggerData(" Cadastrou telefone " . $request->vc_numero);
@@ -101,7 +100,6 @@ class TelefoneController extends Controller
 
              Telefone::findOrFail($id)->update([
                 'vc_numero'=>$request->vc_numero,
-                'it_estado'=> $request->it_estado
              ]);
             
             $this->loggerData("Editou o telefone que possui o id $telefone->id  e nome  $telefone->vc_numero");

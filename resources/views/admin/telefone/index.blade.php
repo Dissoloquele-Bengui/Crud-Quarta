@@ -31,7 +31,7 @@
 
                                         <div class="col-auto">
                                             {{-- @can('user-create') --}}
-                                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#ModalCreateTelefone" style="color:white">
+                                            <a href="#" class="btn botao" data-toggle="modal" data-target="#ModalCreateTelefone" style="color:white">
                                                 <span style="color:white"></span> {{ __('Adicionar') }}
                                             </a>
                                             {{-- @endcan --}}
@@ -44,8 +44,7 @@
                                 <thead class="thead-dark">
                                     <tr>
                                         <th width="5%">ID</th>
-                                        <th width="70%">Telefone</th>
-                                        <th width="20%">Estado</th>
+                                        <th width="90%">Telefone</th>
                                         <th width="5%">Opções</th>
                                     </tr>
                                 </thead>
@@ -54,13 +53,6 @@
                                     <tr>
                                         <td>{{$key+1}}</td>
                                         <td>{{{$item->vc_numero}}}</td>
-                                        <td>
-                                            @if($item->it_estado==1)
-                                            Activo
-                                            @else
-                                            Inactivo
-                                            @endif
-                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -42,7 +42,6 @@ class PontoFocalController extends Controller
                 'vc_pNome'=>$request->vc_pNome,
                 'vc_nomeMeio' =>$request->vc_nomeMeio,
                 'vc_uNome'=>$request->vc_uNome,
-                'it_estado' =>$request->it_estado,
             ]);
 
              $this->loggerData(" Cadastrou Ponto Focal " . $request->vc_pNome." ". $request->vc_nomeMeio." ".$request->vc_uNome);
@@ -76,7 +75,6 @@ class PontoFocalController extends Controller
                 'vc_pNome'=>$request->vc_pNome,
                 'vc_nomeMeio' =>$request->vc_nomeMeio,
                 'vc_uNome'=>$request->vc_uNome,
-                'it_estado' =>$request->it_estado
              ]);
             
             $this->loggerData("Editou o telefone que possui o id $ponto_focal->id  e nome  $ponto_focal->vc_pNome $ponto_focal->vc_nomeMeio $ponto_focal->vc_uNome");
